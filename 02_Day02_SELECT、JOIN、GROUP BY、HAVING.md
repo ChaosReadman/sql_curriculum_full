@@ -171,30 +171,30 @@
       - `HAVING` 句は、集計関数を使用した条件を指定することができます。
       - `WHERE` 句は、グループ化前のデータに対して条件を指定するために使用されますが、`HAVING` 句はグループ化後のデータに対して条件を指定するために使用されます。
 ## 11. 売上合計が1000以上のレコードだけを表示する場合は、以下のように書きます。
-      ```sql
-      SELECT
-         COALESCE(b.title, s.name) AS product_name,
-         SUM(rs.sale_amount) AS total_sales,
-         COUNT(rs.id) AS sale_count
-      FROM register_sales rs
-      JOIN product_stocks ps ON rs.product_stock_id = ps.id
-      LEFT JOIN books b ON ps.book_id = b.id
-      LEFT JOIN stationery s ON ps.stationery_id = s.id
-      GROUP BY COALESCE(b.title, s.name)
-      HAVING SUM(rs.sale_amount) >= 1000
-      ORDER BY total_sales DESC;
-      ```
-      - 上記SQLは、売上合計が1000以上のレコードだけを表示することを意味します。
-      - `HAVING` 句は、`GROUP BY` 句でグループ化された結果に対して条件を指定するために使用されます。
-      - `HAVING SUM(rs.sale_amount) >= 1000` は、売上合計が1000以上のレコードだけを表示することを意味します。
-      - 実行結果として、売上合計が1000以上のレコードが表示されるはずです。
-      - `HAVING` 句は、`GROUP BY` 句の後に記述する必要があります。
-      - `HAVING` 句は、`GROUP BY` 句でグループ化された結果に対して条件を指定するために使用されます。
-      - `HAVING` 句は、集計関数を使用した条件を指定することができます。
-      - `HAVING` 句は、`WHERE` 句と同様に、条件を指定するために使用されますが、`WHERE` 句はグループ化前のデータに対して条件を指定するために使用されます。
-      - `HAVING` 句は、`GROUP BY` 句でグループ化された結果に対して条件を指定するために使用されます。
-      - `HAVING` 句は、集計関数を使用した条件を指定することができます。
-      - `HAVING` 句は、`GROUP BY` 句の後に記述する必要があります。   
+   ```sql
+   SELECT
+      COALESCE(b.title, s.name) AS product_name,
+      SUM(rs.sale_amount) AS total_sales,
+      COUNT(rs.id) AS sale_count
+   FROM register_sales rs
+   JOIN product_stocks ps ON rs.product_stock_id = ps.id
+   LEFT JOIN books b ON ps.book_id = b.id
+   LEFT JOIN stationery s ON ps.stationery_id = s.id
+   GROUP BY COALESCE(b.title, s.name)
+   HAVING SUM(rs.sale_amount) >= 1000
+   ORDER BY total_sales DESC;
+   ```
+   - 上記SQLは、売上合計が1000以上のレコードだけを表示することを意味します。
+   - `HAVING` 句は、`GROUP BY` 句でグループ化された結果に対して条件を指定するために使用されます。
+   - `HAVING SUM(rs.sale_amount) >= 1000` は、売上合計が1000以上のレコードだけを表示することを意味します。
+   - 実行結果として、売上合計が1000以上のレコードが表示されるはずです。
+   - `HAVING` 句は、`GROUP BY` 句の後に記述する必要があります。
+   - `HAVING` 句は、`GROUP BY` 句でグループ化された結果に対して条件を指定するために使用されます。
+   - `HAVING` 句は、集計関数を使用した条件を指定することができます。
+   - `HAVING` 句は、`WHERE` 句と同様に、条件を指定するために使用されますが、`WHERE` 句はグループ化前のデータに対して条件を指定するために使用されます。
+   - `HAVING` 句は、`GROUP BY` 句でグループ化された結果に対して条件を指定するために使用されます。
+   - `HAVING` 句は、集計関数を使用した条件を指定することができます。
+   - `HAVING` 句は、`GROUP BY` 句の後に記述する必要があります。   
 ## 12. 売上回数が1回以上のレジ操作者
 ```sql
    SELECT
