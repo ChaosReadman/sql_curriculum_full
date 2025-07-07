@@ -1,4 +1,4 @@
-# Day2_SELECT文の基本
+# Day02_SELECT文の基本
 
 ---
 
